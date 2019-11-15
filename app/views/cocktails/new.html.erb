@@ -1,3 +1,6 @@
+<%= link_to cocktails_path do %>
+  <%= image_tag "Back.png", width: 50%>
+<% end %>
 <div class="container">
   <h1>New Cocktail</h1>
   <%= simple_form_for [@cocktail] do |f| %>
@@ -5,6 +8,4 @@
     <%= f.input :photo, as: :file %>
     <%= f.submit "New cocktail", class: "btn btn-dark" %>
   <% end %>
-
-  <%= link_to "Back", cocktails_path %>
 </div>

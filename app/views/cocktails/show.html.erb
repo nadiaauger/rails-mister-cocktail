@@ -1,19 +1,26 @@
+<%= link_to cocktails_path do %>
+  <%= image_tag "Back.png", width: 50%>
+<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo.key, height: 300, width: 400 %>');">
+  <div class="container">
+    <h1><%=@cocktail.name %></h1>
+    <p>Change your life and learn to drink best cocktails.</p>
+    <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-dark" %>
+    <!-- <a class="btn btn-flat" href="#">Apply now</a> -->
+  </div>
+</div>
 <div class="container">
-  <h1><%=@cocktail.name %></h1>
-  <% if @cocktail.photo.attached? %>
-    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
+
+  <%# if @cocktail.photo.attached? %>
+    <%#= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+  <%# end %>
   <h2>Recipe :</h2>
-  <ul>
+  <ul class= "list-group">
     <% @cocktail.doses.each do |dose| %>
-      <li>
+      <li class="list-group-item text-center">
         <%= dose.description %> - <%= dose.ingredient.name %>
         <%= link_to "🗑", cocktail_dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
       </li>
     <% end %>
   </ul>
-
-  <p> <%= link_to "Add dose", new_cocktail_dose_path(@cocktail) %> </p>
-
-  <p> <%= link_to "Back", cocktails_path %> </p>
 </div>
